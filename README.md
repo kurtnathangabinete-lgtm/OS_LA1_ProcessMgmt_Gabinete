@@ -59,3 +59,30 @@ Expected Output: Empty — neither parent nor child is running.
 After running:
 
 Get-Process -Name replace_sim, cmd -ErrorAction SilentlyContinue
+
+
+
+```terminal
+
+Steps
+
+Run a parent program (e.g., create_two_children.exe):
+
+./create_two_children.exe
+
+
+Open a new PowerShell window and list running child processes:
+
+Get-Process -Name child_echo -ErrorAction SilentlyContinue
+
+
+Forced termination of a child:
+
+Stop-Process -Id <PID>
+
+
+Replace <PID> with one of the child PIDs.
+
+Verify remaining output empty which is before:
+
+Get-Process -Name child_echo -ErrorAction SilentlyContinue
