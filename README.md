@@ -34,13 +34,26 @@ Compile parent:
 gcc create_two_children.c -o create_two_children.exe
 
 
-Run parent program:
 
-./create_two_children.exe
+Task C – Simulating exec()
+
+Description:
+The parent program (replace_sim.exe) spawns a new process (example: cmd /c dir).
+Parent waits for it to finish and exits with the same exit code as the spawned process.
+
+RUN:
+gcc replace_sim.c -o replace_sim.exe
+
+./replace_sim.exe
 
 
-Observe that it spawns two child processes.
+Before running:
 
-Use PowerShell to inspect running processes before and after:
+Get-Process -Name replace_sim, cmd -ErrorAction SilentlyContinue
 
-Get-Process -Name create_two_children, child_echo -ErrorAction SilentlyContinue
+
+Expected Output: Empty — neither parent nor child is running.
+
+After running:
+
+Get-Process -Name replace_sim, cmd -ErrorAction SilentlyContinue
