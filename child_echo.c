@@ -1,13 +1,9 @@
-#include <stdio.h>
 #include <windows.h>
+#include <stdio.h>
 
-int main() {
-    DWORD pid = GetCurrentProcessId();
-    printf("Child process started. PID = %lu\n", pid);
-
-    // Keep the child alive for 5 seconds
-    Sleep(5000);
-
-    printf("Child process exiting. PID = %lu\n", pid);
+int main(int argc, char *argv[]) {
+    printf("Child PID: %lu, Parent PID passed: %s\n", GetCurrentProcessId(), argv[1]);
+    fflush(stdout);        // Ensure output prints immediately
+    Sleep(15000);          // 15 seconds so you can check it
     return 0;
 }
